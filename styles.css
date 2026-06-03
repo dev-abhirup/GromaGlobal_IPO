@@ -41,11 +41,32 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
 }
 .brand {
-  display: flex; align-items: center; gap: 10px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
-.brand img { width: 44px; height: 44px; }
-.brand-text { font-family: var(--serif); font-size: 26px; font-weight: 700; color: var(--green); letter-spacing: 1px; line-height: 1; }
-.brand-text small { display: block; font-family: var(--sans); font-size: 10px; letter-spacing: 3px; color: var(--muted); font-weight: 600; margin-top: 2px; }
+.brand-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.brand-logo {
+  width: 125px;
+  height: 43px;
+  display: block;
+}
+.brand-subtitle {
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #050505;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-top: 2px;
+  text-align: center;
+}
 
 .nav-links {
   display: flex; gap: 38px; list-style: none;
