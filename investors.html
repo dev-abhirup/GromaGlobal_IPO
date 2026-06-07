@@ -15,7 +15,7 @@
   <link rel="icon" href="images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
         <span class="brand-subtitle">GROMA GLOBAL LIMITED</span>
       </div>
     </a>
-    <button class="menu-btn" aria-label="menu"><span></span><span></span><span></span></button>
+    <button class="menu-btn" aria-label="menu"><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li class="has-dropdown">
@@ -47,6 +47,7 @@
           <li><a href="investors.html#committee-board">Committee Board</a></li>
           <li><a href="investors.html#financial-results">Financial Results</a></li>
           <li><a href="investors.html#shareholding-pattern">Shareholding Pattern</a></li>
+          <li><a href="investors.html#group-subsidiaries">Group &amp; Subsidiary Companies</a></li>
           <li><a href="investors.html#corporate-policies">Corporate Policies</a></li>
           <li><a href="investors.html#annual-report">Annual Reports</a></li>
           <li><a href="investors.html#initial-public-offering">Initial Public Offering</a></li>
@@ -62,12 +63,12 @@
 
 <section class="hero" style="min-height: 260px; background: linear-gradient(90deg, rgba(253,250,241,0.95) 0%, rgba(253,250,241,0.7) 50%, rgba(253,250,241,0.3) 100%), url('images/hero-wheat.jpg') center/cover no-repeat;">
   <div class="hero-inner" style="padding: 40px 24px;">
-    <h1>Investor Relations</h1>
-    <p style="font-size: 18px; margin-top: 10px; color: var(--ink); font-weight: 500;">Compliance, filings, policies, and updates for Groma Global Limited shareholders.</p>
+    <h1 class="reveal-on-scroll">Investor Relations</h1>
+    <p class="reveal-on-scroll delay-100" style="font-size: 18px; margin-top: 10px; color: var(--color-text-primary); font-weight: 500;">Compliance, filings, policies, and updates for Groma Global Limited shareholders.</p>
   </div>
 </section>
 
-<section class="section">
+<section class="section reveal-on-scroll">
   <!-- Mobile Toggle Button for Sidebar -->
   <button class="investor-sidebar-toggle" aria-label="Toggle investor menu">
     <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
@@ -114,6 +115,12 @@
           </button>
         </li>
         <li>
+          <button class="investor-nav-link" data-tab="group-subsidiaries">
+            <svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2v3c0 1.1-.9 2-2 2h-1v4h3c1.1 0 2 .9 2 2v3c0 1.1-.9 2-2 2h-4c-1.1 0-2-.9-2-2v-3c0-1.1.9-2 2-2h3v-4H9v4h3c1.1 0 2 .9 2 2v3c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2v-3c0-1.1.9-2 2-2h3v-4h-1c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h4zM8 16v3h4v-3H8zm8 0v3h4v-3h-4zm-4-12v3h4V4h-4z"/></svg>
+            Group &amp; Subsidiary Companies
+          </button>
+        </li>
+        <li>
           <button class="investor-nav-link" data-tab="corporate-policies">
             <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
             Corporate Policies
@@ -150,6 +157,28 @@
           </button>
         </li>
       </ul>
+      
+      <!-- ===== Investor Relations Quick Contact ===== -->
+      <div class="sidebar-contact-blocks">
+        <a href="tel:+919076113135" class="contact-block-btn">
+          <div class="contact-block-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.57a.98.98 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+          </div>
+          <div class="contact-block-text">
+            <span class="contact-block-title">Investor Relations</span>
+            <span class="contact-block-val">+91 90761 13135</span>
+          </div>
+        </a>
+        <a href="mailto:investors@gromaglobal.com" class="contact-block-btn">
+          <div class="contact-block-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div class="contact-block-text">
+            <span class="contact-block-title">Investor Relations</span>
+            <span class="contact-block-val">investors@gromaglobal.com</span>
+          </div>
+        </a>
+      </div>
     </div>
 
     <!-- ===== Content Panel ===== -->
@@ -266,6 +295,17 @@
             </div>
             <span class="doc-status pending">Pending Upload</span>
           </div>
+        </div>
+      </div>
+
+      <!-- 6. Group & Subsidiary Companies -->
+      <div class="tab-panel" id="group-subsidiaries">
+        <h2>Group &amp; Subsidiary Companies</h2>
+        <p>Groma Global Limited does not have any group companies, joint ventures, or subsidiary companies as of the date of filing of the Draft Red Herring Prospectus (DRHP).</p>
+        <div class="info-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2v3c0 1.1-.9 2-2 2h-1v4h3c1.1 0 2 .9 2 2v3c0 1.1-.9 2-2 2h-4c-1.1 0-2-.9-2-2v-3c0-1.1.9-2 2-2h3v-4H9v4h3c1.1 0 2 .9 2 2v3c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2v-3c0-1.1.9-2 2-2h3v-4h-1c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h4zM8 16v3h4v-3H8zm8 0v3h4v-3h-4zm-4-12v3h4V4h-4z"/></svg>
+          <h3>No Group or Subsidiary Companies</h3>
+          <p>Any future corporate restructuring, additions of joint ventures, or creation of subsidiary companies will be disclosed under this section immediately as per listing regulations.</p>
         </div>
       </div>
 
@@ -419,7 +459,7 @@
         <p>In terms of Regulation 46(2)(j) of SEBI (LODR) Regulations, 2015, the contact details of the Compliance Officer / Company Secretary for coordinating and handling investor grievances are detailed below:</p>
         <div class="grievance-card">
           <div class="grievance-header">
-            <h3 style="font-family: var(--serif); color: var(--green-dark); font-size: 22px; margin-bottom: 4px;">Compliance Officer &amp; Company Secretary</h3>
+            <h3 style="font-family: var(--font-serif); color: var(--color-primary); font-size: 22px; margin-bottom: 4px;">Compliance Officer &amp; Company Secretary</h3>
             <p style="font-size: 14px; color: #666; margin-bottom: 0;">Groma Global Limited Compliance Department</p>
           </div>
           <div class="grievance-contact-row">
@@ -430,7 +470,7 @@
             <div class="grievance-info-block">
               <h4>Contact Number</h4>
               <p><a href="tel:+9102226138096">+91 022 26138096</a></p>
-              <p><a href="tel:+919004221999">+91 90042 21999</a></p>
+              <p><a href="tel:+919076113135">+91 90761 13135</a></p>
             </div>
             <div class="grievance-info-block" style="grid-column: 1 / -1;">
               <h4>Registered Office Address</h4>

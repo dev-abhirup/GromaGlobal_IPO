@@ -13,7 +13,7 @@
   <meta property="og:image" content="https://gromaglobal.com/images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="images/favicon.png" />
 </head>
@@ -27,7 +27,7 @@
         <span class="brand-subtitle">GROMA GLOBAL LIMITED</span>
       </div>
     </a>
-    <button class="menu-btn" aria-label="menu"><span></span><span></span><span></span></button>
+    <button class="menu-btn" aria-label="menu"><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li class="has-dropdown">
@@ -47,6 +47,7 @@
           <li><a href="investors.html#committee-board">Committee Board</a></li>
           <li><a href="investors.html#financial-results">Financial Results</a></li>
           <li><a href="investors.html#shareholding-pattern">Shareholding Pattern</a></li>
+          <li><a href="investors.html#group-subsidiaries">Group &amp; Subsidiary Companies</a></li>
           <li><a href="investors.html#corporate-policies">Corporate Policies</a></li>
           <li><a href="investors.html#annual-report">Annual Reports</a></li>
           <li><a href="investors.html#initial-public-offering">Initial Public Offering</a></li>
@@ -65,25 +66,29 @@
 <!-- ===== Our Global Presence ===== -->
 <section class="presence">
   <div class="presence-inner">
-    <h2>Our Global Presence</h2>
-    <p class="presence-sub">Groma Global’s robust global network enables us to source and supply top-quality agricultural commodities from:</p>
+    <h2 class="reveal-on-scroll">Our Global Presence</h2>
+    <p class="presence-sub reveal-on-scroll delay-100">Groma Global’s robust global network enables us to source and supply top-quality agricultural commodities from:</p>
 
     <div class="flag-grid">
-      <div class="flag-card">
-        <img src="images/flag-india.png" alt="India flag" />
+      <div class="flag-card reveal-on-scroll delay-100">
+        <div class="img-zoom-wrapper"><img src="images/flag-india.png" alt="India flag" /></div>
         <h4>India</h4>
       </div>
-      <div class="flag-card">
-        <img src="images/flag-tanzania.png" alt="Tanzania flag" />
+      <div class="flag-card reveal-on-scroll delay-200">
+        <div class="img-zoom-wrapper"><img src="images/flag-tanzania.png" alt="Tanzania flag" /></div>
         <h4>Tanzania</h4>
       </div>
-      <div class="flag-card">
-        <img src="images/flag-canada.png" alt="Canada flag" />
+      <div class="flag-card reveal-on-scroll delay-300">
+        <div class="img-zoom-wrapper"><img src="images/flag-canada.png" alt="Canada flag" /></div>
         <h4>Canada</h4>
       </div>
-      <div class="flag-card">
-        <img src="images/flag-malawi.png" alt="Malawi flag" />
+      <div class="flag-card reveal-on-scroll delay-400">
+        <div class="img-zoom-wrapper"><img src="images/flag-malawi.png" alt="Malawi flag" /></div>
         <h4>Malawi</h4>
+      </div>
+      <div class="flag-card reveal-on-scroll delay-500">
+        <div class="img-zoom-wrapper"><img src="images/flag-vietnam.png" alt="Vietnam flag" /></div>
+        <h4>Vietnam</h4>
       </div>
     </div>
   </div>
@@ -92,7 +97,7 @@
 <!-- ===== Contact ===== -->
 <section class="contact-section">
   <div class="contact-grid">
-    <div class="contact-form-col">
+    <div class="contact-form-col reveal-on-scroll">
       <h2>Get In Touch</h2>
       <form class="ginput-form" id="contact-form">
         <div class="ginput">
@@ -117,18 +122,21 @@
       </form>
     </div>
 
-    <div class="contact-info-col">
+    <div class="contact-info-col reveal-on-scroll delay-200">
       <h2>Contact Us</h2>
       <div class="cinfo">
+        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--color-primary); margin-bottom: 12px; display: block;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         <h5>EMAIL</h5>
         <p><a href="mailto:exim@gromaglobal.com">exim@gromaglobal.com</a></p>
       </div>
       <div class="cinfo">
+        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--color-primary); margin-bottom: 12px; display: block;"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.57a.98.98 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
         <h5>PHONE NUMBER</h5>
         <p><a href="tel:+9102226138096">+91 022 26138096</a></p>
         <p><a href="tel:+919004221999">+91 90042 21999</a></p>
       </div>
       <div class="cinfo">
+        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--color-primary); margin-bottom: 12px; display: block;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <h5>ADDRESS</h5>
         <p class="addr">1102/A, Fortune Terraces,<br />New Link Road,<br />Andheri (West), Mumbai 400053</p>
       </div>

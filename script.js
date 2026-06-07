@@ -3,7 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn = document.querySelector(".menu-btn");
   const links = document.querySelector(".nav-links");
   if (btn && links) {
-    btn.addEventListener("click", () => links.classList.toggle("open"));
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("open");
+      links.classList.toggle("open");
+    });
   }
 
   // Mark active nav link based on current page
@@ -129,4 +132,33 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener("click", closeSidebar);
     });
   }
+
+  // Scroll Animations using IntersectionObserver
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
+    observer.observe(el);
+  });
+
+  // Sticky Header Scroll Effect
+  const header = document.querySelector(".site-header");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
 });
