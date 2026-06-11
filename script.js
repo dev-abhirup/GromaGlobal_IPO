@@ -161,4 +161,146 @@ document.addEventListener("DOMContentLoaded", () => {
       header.classList.remove("scrolled");
     }
   });
+
+  // Initialize Product Carousels (Horizontal Orientation with Infinite Loop Sliding)
+  const initProductCarousels = () => {
+    const carousels = document.querySelectorAll(".product-carousel:not(.single-image)");
+    carousels.forEach((carousel) => {
+      const track = carousel.querySelector(".carousel-track");
+      const slides = carousel.querySelectorAll(".carousel-slide");
+      const dots = carousel.querySelectorAll(".carousel-dot");
+      const prevBtn = carousel.querySelector(".carousel-btn.prev");
+      const nextBtn = carousel.querySelector(".carousel-btn.next");
+      
+      const L = slides.length;
+      if (L <= 1) return;
+
+      // Clone slides for infinite loop
+      const firstClone = slides[0].cloneNode(true);
+      const lastClone = slides[L - 1].cloneNode(true);
+
+      firstClone.classList.add("carousel-clone");
+      lastClone.classList.add("carousel-clone");
+
+      // Append and prepend clones
+      track.appendChild(firstClone);
+      track.insertBefore(lastClone, slides[0]);
+
+      let currentIndex = 1; // Displaying slide 1 initially (index 0 is the lastClone)
+      let intervalId = null;
+      let isTransitioning = false;
+      const intervalDuration = 5000; // 5 seconds
+
+      // Position track to show slide 1 initially without transition
+      track.style.transform = `translateX(-100%)`;
+
+      const goToSlide = (index, animate = true) => {
+        if (isTransitioning && animate) return;
+
+        if (animate) {
+          isTransitioning = true;
+          track.classList.add("transitioning");
+        } else {
+          track.classList.remove("transitioning");
+          void track.offsetWidth; // Force reflow to disable transitions instantly
+        }
+
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        // Update dots state based on active original slide
+        let activeDotIndex = currentIndex - 1;
+        if (activeDotIndex < 0) {
+          activeDotIndex = L - 1;
+        } else if (activeDotIndex >= L) {
+          activeDotIndex = 0;
+        }
+
+        dots.forEach((dot, idx) => {
+          if (idx === activeDotIndex) {
+            dot.classList.add("active");
+          } else {
+            dot.classList.remove("active");
+          }
+        });
+      };
+
+      const nextSlide = () => {
+        if (isTransitioning) return;
+        goToSlide(currentIndex + 1);
+      };
+
+      const prevSlide = () => {
+        if (isTransitioning) return;
+        goToSlide(currentIndex - 1);
+      };
+
+      // Handle seamless snap after transition
+      track.addEventListener("transitionend", () => {
+        isTransitioning = false;
+        track.classList.remove("transitioning");
+
+        if (currentIndex === 0) {
+          goToSlide(L, false);
+        } else if (currentIndex === L + 1) {
+          goToSlide(1, false);
+        }
+      });
+
+      // Dot navigation
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (isTransitioning) return;
+          goToSlide(index + 1);
+          stopAutoplay();
+          startAutoplay();
+        });
+      });
+
+      // Arrow navigation
+      if (prevBtn) {
+        prevBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (isTransitioning) return;
+          prevSlide();
+          stopAutoplay();
+          startAutoplay();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (isTransitioning) return;
+          nextSlide();
+          stopAutoplay();
+          startAutoplay();
+        });
+      }
+
+      const startAutoplay = () => {
+        if (!intervalId) {
+          intervalId = setInterval(nextSlide, intervalDuration);
+        }
+      };
+
+      const stopAutoplay = () => {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      };
+
+      // Pause/resume autoplay on hover
+      carousel.addEventListener("mouseenter", stopAutoplay);
+      carousel.addEventListener("mouseleave", startAutoplay);
+
+      // Start initially
+      startAutoplay();
+    });
+  };
+
+  initProductCarousels();
 });
+
