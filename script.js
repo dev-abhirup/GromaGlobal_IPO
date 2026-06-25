@@ -11,17 +11,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Mark active nav link based on current page
   const pathname = location.pathname;
+  const isCurrentInvestor = pathname.includes("investors.html") || pathname.includes("/investor/");
+
   document.querySelectorAll(".nav-links a").forEach((a) => {
     const href = a.getAttribute("href");
     if (href) {
-      const baseHref = href.split("#")[0].split("/").pop() || "index.html";
-      const isInvestorHref = href.includes("investors.html") || href.includes("/investor/");
-      const isCurrentInvestor = pathname.includes("investors.html") || pathname.includes("/investor/");
+      const isInvestorHref = href.includes("investors.html") || href.includes("investor/");
       
-      if (isInvestorHref && isCurrentInvestor) {
-        a.classList.add("active");
-      } else if (baseHref === pathname.split("/").pop() || (baseHref === "index.html" && pathname === "/")) {
-        a.classList.add("active");
+      if (isInvestorHref) {
+        if (isCurrentInvestor && !a.closest(".dropdown")) {
+          a.classList.add("active");
+        } else {
+          a.classList.remove("active");
+        }
+      } else {
+        const cleanPath = (p) => p.split("#")[0].replace(/\/$/, "").split("/").pop() || "index.html";
+        const hrefPage = cleanPath(href);
+        const currentPage = cleanPath(pathname);
+        
+        if (hrefPage === currentPage && !isCurrentInvestor) {
+          a.classList.add("active");
+        } else {
+          a.classList.remove("active");
+        }
       }
     }
   });
@@ -64,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Map route slug to the tab id
   const routeToTabMap = {
-    "promoters-message": "promoters-message",
     "board-of-directors": "board-of-directors",
     "committee-board": "committee-board",
     "financial-results": "financial-results",
@@ -81,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Map tab id to route slug for url construction
   const tabToRouteMap = {
-    "promoters-message": "promoters-message",
     "board-of-directors": "board-of-directors",
     "committee-board": "committee-board",
     "financial-results": "financial-results",
@@ -141,11 +151,16 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener("click", (e) => {
         const targetTab = link.getAttribute("data-tab");
         if (targetTab) {
-          e.preventDefault();
-          switchTab(targetTab);
+          // If the panel exists on this page, handle via client-side routing.
+          // Otherwise, allow standard browser navigation to the clean URL.
+          if (document.getElementById(targetTab)) {
+            e.preventDefault();
+            switchTab(targetTab);
+          }
         }
       });
     });
+
 
     // Handle browser back/forward buttons (popstate)
     window.addEventListener("popstate", (e) => {
