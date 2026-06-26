@@ -86,8 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "ipo": "initial-public-offering",
     "initial-public-offering": "initial-public-offering",
     "investor-grievances": "investor-grievances",
-    "material-documents": "material-documents",
-    "material-creditors": "material-creditors"
   };
 
   // Map tab id to route slug for url construction
@@ -101,8 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "annual-report": "annual-report",
     "initial-public-offering": "ipo", // default route to /investor/ipo/
     "investor-grievances": "investor-grievances",
-    "material-documents": "material-documents",
-    "material-creditors": "material-creditors"
   };
 
   const switchTab = (tabId, updateUrl = true) => {
@@ -153,7 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (targetTab) {
           // If the panel exists on this page, handle via client-side routing.
           // Otherwise, allow standard browser navigation to the clean URL.
-          if (document.getElementById(targetTab)) {
+          // Do not intercept if we are on a policy reader page (path contains /policies/).
+          if (document.getElementById(targetTab) && !window.location.pathname.includes("/policies/")) {
             e.preventDefault();
             switchTab(targetTab);
           }
@@ -257,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Scroll Animations using IntersectionObserver
   const observerOptions = {
-    threshold: 0.1,
+    threshold: 0.01,
     rootMargin: "0px 0px -50px 0px"
   };
 
