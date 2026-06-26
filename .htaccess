@@ -67,7 +67,7 @@
 # Configure Cache-Control headers for modern clients
 <IfModule mod_headers.c>
   # 1 Year Browser Cache for static assets
-  <FilesMatch "\.(css|js|gif|png|jpg|jpeg|webp|svg|ico|woff|woff2|otf|ttf)$">
+  <FilesMatch "\.(css|js|gif|png|jpg|jpeg|webp|svg|ico|woff|woff2|otf|ttf|pdf)$">
     Header set Cache-Control "max-age=31536000, public, no-transform"
   </FilesMatch>
   

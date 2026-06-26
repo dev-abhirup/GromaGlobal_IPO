@@ -271,15 +271,22 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 
-  // Sticky Header Scroll Effect
+  // Sticky Header Scroll Effect (passive + rAF debounced for 60fps)
   const header = document.querySelector(".site-header");
+  let ticking = false;
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 10) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        if (window.scrollY > 10) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
-  });
+  }, { passive: true });
 
   // Initialize Product Carousels (Horizontal Orientation with Infinite Loop Sliding)
   const initProductCarousels = () => {

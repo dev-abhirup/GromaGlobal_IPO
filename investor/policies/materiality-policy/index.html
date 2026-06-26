@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://gromaglobal.com/investor/promoters-message/" />
   <meta property="og:image" content="https://gromaglobal.com/images/logo.webp" />
-  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="../../../styles.css?v=3.0">
   <link rel="icon" href="../../../images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -209,7 +209,7 @@
     <!-- ===== Content Panel ===== -->
     <div class="investor-content">
       <div class="tab-panel active" id="corporate-policies">
-        <div style="margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <div style="margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
           <div>
             <a href="../../corporate-policies/" class="contact-block-btn" style="padding: 8px 16px; font-size: 14px; display: inline-flex; align-items: center; text-decoration: none; border-radius: 4px; background: var(--color-bg-primary); border: 1px solid #ddd; width: auto; min-height: unset; margin: 0;">
               <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 8px; fill: currentColor;"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
@@ -217,20 +217,18 @@
             </a>
           </div>
         </div>
-        
-        <article style="background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); color: var(--color-text-primary); text-align: center; max-width: 650px; margin: 40px auto; display: flex; flex-direction: column; align-items: center; gap: 24px; border: 1px solid var(--color-border);">
-          <div style="background: rgba(169, 132, 61, 0.1); width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold);">
-            <svg viewBox="0 0 24 24" style="width: 32px; height: 32px; fill: currentColor;"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        <div class="policy-download-container animate-panel">
+          <p class="categories">
+            <a href="../../corporate-policies/"><span class="separator">-</span> Corporate Policies</a>
+          </p>
+          <h2 class="title">Materiality Policy for Disclosures</h2>
+          <div class="content">
+            <div class="wp-block-file">
+              <a href="policy.pdf" target="_blank" download>13. Materiality Policy.pdf</a>
+              <a href="policy.pdf" target="_blank" class="wp-block-file__button wp-element-button" download>Download</a>
+            </div>
           </div>
-          <div>
-            <h2 style="font-family: var(--font-serif); font-size: 22px; color: var(--color-primary); margin: 0 0 8px 0; padding: 0; line-height: 1.4; border: none;">Materiality Policy</h2>
-            <span style="font-size: 13.5px; color: var(--color-text-secondary); font-family: var(--font-sans);">13. Materiality Policy.pdf</span>
-          </div>
-          <a href="policy.pdf" target="_blank" class="contact-block-btn" style="padding: 12px 28px; width: auto; font-weight: 600; display: inline-flex; justify-content: center; gap: 10px; text-decoration: none;">
-            <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor; transition: var(--transition-smooth);"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-            View / Download PDF
-          </a>
-        </article>
+        </div>
       </div>
     </div></div></section>
 
@@ -279,6 +277,6 @@
   </div>
 </footer>
 
-<script src="../../../script.js" defer></script>
+<script src="../../../script.js?v=3.0" defer></script>
 </body>
 </html>
