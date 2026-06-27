@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tabPanels = document.querySelectorAll(".tab-panel");
 
   // Map route slug to the tab id
-    const routeToTabMap = {
+      const routeToTabMap = {
     "corporate-announcement": "corporate-announcement",
     "board-of-directors": "board-of-directors",
     "committee-board": "committee-board",
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Map tab id to route slug for url construction
-    const tabToRouteMap = {
+      const tabToRouteMap = {
     "corporate-announcement": "corporate-announcement",
     "board-of-directors": "board-of-directors",
     "committee-board": "committee-board",

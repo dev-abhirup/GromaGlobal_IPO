@@ -3,26 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>Redirecting to Investor Relations - GROMA GLOBAL LIMITED</title>
-  <link rel="canonical" href="https://gromaglobal.com/investor/board-of-directors/" />
+  <link rel="canonical" href="https://gromaglobal.com/investor/corporate-announcement/" />
   <script>
     (function() {
       var hash = window.location.hash.substring(1);
       var routeToTabMap = {
-        
+        "corporate-announcement": "corporate-announcement",
         "board-of-directors": "board-of-directors",
         "committee-board": "committee-board",
         "key-managerial-personnel": "key-managerial-personnel",
-        "financial-results": "financial-results",
-        "shareholding-pattern": "shareholding-pattern",
         "group-subsidiaries": "group-subsidiaries",
         "corporate-policies": "corporate-policies",
-        "annual-report": "annual-report",
         "ipo": "ipo",
         "initial-public-offering": "ipo",
+        "investor-presentation": "investor-presentation",
+        "financial-results": "financial-results",
+        "shareholding-pattern": "shareholding-pattern",
+        "corporate-information": "corporate-information",
         "investor-grievances": "investor-grievances",
+        "material-contracts": "material-contracts",
+        "material-creditors": "material-creditors",
+        "material-documents": "material-documents"
       };
       
-      var target = "board-of-directors";
+      var target = "corporate-announcement";
       if (hash && routeToTabMap[hash]) {
         target = routeToTabMap[hash];
       }
