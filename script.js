@@ -75,30 +75,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const tabPanels = document.querySelectorAll(".tab-panel");
 
   // Map route slug to the tab id
-  const routeToTabMap = {
+    const routeToTabMap = {
+    "corporate-announcement": "corporate-announcement",
     "board-of-directors": "board-of-directors",
     "committee-board": "committee-board",
-    "financial-results": "financial-results",
-    "shareholding-pattern": "shareholding-pattern",
+    "key-managerial-personnel": "key-managerial-personnel",
     "group-subsidiaries": "group-subsidiaries",
     "corporate-policies": "corporate-policies",
-    "annual-report": "annual-report",
     "ipo": "initial-public-offering",
     "initial-public-offering": "initial-public-offering",
+    "investor-presentation": "investor-presentation",
+    "financial-results": "financial-results",
+    "shareholding-pattern": "shareholding-pattern",
+    "corporate-information": "corporate-information",
     "investor-grievances": "investor-grievances",
+    "material-contracts": "material-contracts",
+    "material-creditors": "material-creditors",
+    "material-documents": "material-documents",
   };
 
   // Map tab id to route slug for url construction
-  const tabToRouteMap = {
+    const tabToRouteMap = {
+    "corporate-announcement": "corporate-announcement",
     "board-of-directors": "board-of-directors",
     "committee-board": "committee-board",
-    "financial-results": "financial-results",
-    "shareholding-pattern": "shareholding-pattern",
+    "key-managerial-personnel": "key-managerial-personnel",
     "group-subsidiaries": "group-subsidiaries",
     "corporate-policies": "corporate-policies",
-    "annual-report": "annual-report",
-    "initial-public-offering": "ipo", // default route to /investor/ipo/
+    "initial-public-offering": "ipo",
+    "initial-public-offering": "ipo",
+    "investor-presentation": "investor-presentation",
+    "financial-results": "financial-results",
+    "shareholding-pattern": "shareholding-pattern",
+    "corporate-information": "corporate-information",
     "investor-grievances": "investor-grievances",
+    "material-contracts": "material-contracts",
+    "material-creditors": "material-creditors",
+    "material-documents": "material-documents",
   };
 
   const switchTab = (tabId, updateUrl = true) => {
