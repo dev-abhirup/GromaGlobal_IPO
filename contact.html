@@ -66,6 +66,8 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
 
 <header class="site-header">
   <nav class="nav">
@@ -111,6 +113,8 @@
     </ul>
   </nav>
 </header>
+  <main id="main-content">
+
 
 <h1 class="sr-only">Contact Groma Global Limited</h1>
 
@@ -152,20 +156,20 @@
       <h2>Get In Touch</h2>
       <form class="ginput-form" id="contact-form">
         <div class="ginput">
-          <label>First Name <span>*</span></label>
-          <input type="text" name="name" required />
+          <label for="first-name">First Name <span>*</span></label>
+          <input id="first-name" type="text" name="name" required />
         </div>
         <div class="ginput">
-          <label>Email Address <span>*</span></label>
-          <input type="email" name="email" required />
+          <label for="email-address">Email Address <span>*</span></label>
+          <input id="email-address" type="email" name="email" required />
         </div>
         <div class="ginput">
-          <label>Phone Number <span>*</span></label>
-          <input type="tel" name="phone" required />
+          <label for="phone-number">Phone Number <span>*</span></label>
+          <input id="phone-number" type="tel" name="phone" required />
         </div>
         <div class="ginput textarea">
-          <label>Message <span>*</span></label>
-          <textarea name="message" maxlength="180" placeholder="Enter your message..." required></textarea>
+          <label for="message-input">Message <span>*</span></label>
+          <textarea id="message-input" name="message" maxlength="180" placeholder="Enter your message..." required></textarea>
           <div class="counter"><span id="char-count">0</span> / 180</div>
         </div>
         <button class="btn submit-btn" type="submit">SUBMIT</button>
@@ -203,6 +207,8 @@
   </div>
 </section>
 
+
+  </main>
 <footer class="footer">
   <div class="footer-main">
     <div class="footer-brand">

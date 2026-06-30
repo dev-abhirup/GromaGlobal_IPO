@@ -11,8 +11,8 @@
   --color-primary-rgb: 10, 42, 27;
   --color-accent: #4F6B27;           /* Elegant olive/sage green */
   --color-accent-rgb: 79, 107, 39;
-  --color-gold: #A9843D;             /* Editorial bronze gold */
-  --color-gold-rgb: 169, 132, 61;
+  --color-gold: #8E6E32;             /* Editorial bronze gold (contrast optimized) */
+  --color-gold-rgb: 142, 110, 50;
   --color-bg-footer: #0a2a1b;         /* Deep luxury emerald green */
   --color-border: rgba(10, 42, 27, 0.08);
   --color-border-hover: rgba(10, 42, 27, 0.16);
@@ -65,7 +65,7 @@ a {
   text-decoration: none;
 }
 
-/* ---------- Accessibility: Focus Styles ---------- */
+/* ---------- Accessibility: Focus & Skip Links ---------- */
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
@@ -73,6 +73,21 @@ a {
 }
 :focus:not(:focus-visible) {
   outline: none;
+}
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  z-index: 2000;
+  font-weight: 600;
+  transition: top 0.3s ease;
+}
+.skip-link:focus {
+  top: 20px;
 }
 
 /* ---------- Reduced Motion Support ---------- */
@@ -89,10 +104,9 @@ a {
   }
 }
 
-/* ---------- Content Visibility for Off-Screen Sections ---------- */
-.presence, .section, .footer, .contact-section {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 500px;
+/* ---------- Scroll Lock for Mobile Menu/Sidebar ---------- */
+body.no-scroll {
+  overflow: hidden;
 }
 
 /* ---------- Floating Pill Header ---------- */

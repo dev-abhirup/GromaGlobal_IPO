@@ -3,9 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn = document.querySelector(".menu-btn");
   const links = document.querySelector(".nav-links");
   if (btn && links) {
+    // Set initial ARIA attributes
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-controls", "nav-links-list");
+    links.id = "nav-links-list";
+
     btn.addEventListener("click", () => {
-      btn.classList.toggle("open");
+      const isOpen = btn.classList.toggle("open");
       links.classList.toggle("open");
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      document.body.classList.toggle("no-scroll", isOpen);
     });
   }
 
@@ -119,13 +126,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const targetPanel = document.getElementById(tabId);
     
     if (targetLink && targetPanel) {
-      // Remove active class from all links and panels
-      tabLinks.forEach((l) => l.classList.remove("active"));
-      tabPanels.forEach((p) => p.classList.remove("active"));
+      // Remove active class and update ARIA states on all links and panels
+      tabLinks.forEach((l) => {
+        l.classList.remove("active");
+        l.setAttribute("aria-selected", "false");
+        l.setAttribute("tabindex", "-1");
+      });
+      tabPanels.forEach((p) => {
+        p.classList.remove("active");
+        p.setAttribute("aria-hidden", "true");
+      });
 
-      // Add active class to clicked link and panel
+      // Add active class and set ARIA states to clicked link and panel
       targetLink.classList.add("active");
+      targetLink.setAttribute("aria-selected", "true");
+      targetLink.setAttribute("tabindex", "0");
       targetPanel.classList.add("active");
+      targetPanel.setAttribute("aria-hidden", "false");
 
       // On mobile layout, scroll smoothly to the content panel
       if (window.innerWidth <= 900) {
@@ -156,6 +173,62 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   if (tabLinks.length > 0 && tabPanels.length > 0) {
+    const tabList = document.querySelector(".investor-nav");
+    if (tabList) {
+      tabList.setAttribute("role", "tablist");
+      
+      tabLinks.forEach((link) => {
+        const tabId = link.getAttribute("data-tab");
+        link.setAttribute("role", "tab");
+        link.setAttribute("aria-controls", tabId);
+        link.id = `tab-link-${tabId}`;
+        
+        const panel = document.getElementById(tabId);
+        if (panel) {
+          panel.setAttribute("role", "tabpanel");
+          panel.setAttribute("aria-labelledby", link.id);
+        }
+        
+        if (link.classList.contains("active")) {
+          link.setAttribute("aria-selected", "true");
+          link.setAttribute("tabindex", "0");
+          if (panel) panel.setAttribute("aria-hidden", "false");
+        } else {
+          link.setAttribute("aria-selected", "false");
+          link.setAttribute("tabindex", "-1");
+          if (panel) panel.setAttribute("aria-hidden", "true");
+        }
+      });
+
+      // Add keyboard support (Arrow keys)
+      tabList.addEventListener("keydown", (e) => {
+        let index = Array.from(tabLinks).indexOf(document.activeElement);
+        if (index === -1) return;
+
+        let nextIndex = -1;
+        if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+          nextIndex = (index + 1) % tabLinks.length;
+        } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+          nextIndex = (index - 1 + tabLinks.length) % tabLinks.length;
+        } else if (e.key === "Home") {
+          nextIndex = 0;
+        } else if (e.key === "End") {
+          nextIndex = tabLinks.length - 1;
+        }
+
+        if (nextIndex !== -1) {
+          e.preventDefault();
+          const nextLink = tabLinks[nextIndex];
+          nextLink.focus();
+          
+          const targetTab = nextLink.getAttribute("data-tab");
+          if (document.getElementById(targetTab) && !window.location.pathname.includes("/policies/")) {
+            switchTab(targetTab);
+          }
+        }
+      });
+    }
+
     tabLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         const targetTab = link.getAttribute("data-tab");
@@ -244,14 +317,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.querySelector(".sidebar-close-mobile");
 
   if (sidebar && toggleBtn) {
+    // Set initial ARIA attributes for sidebar drawer
+    toggleBtn.setAttribute("aria-expanded", "false");
+    toggleBtn.setAttribute("aria-controls", "investor-sidebar-container");
+    sidebar.id = "investor-sidebar-container";
+    if (closeBtn) {
+      closeBtn.setAttribute("aria-label", "Close investor menu");
+    }
+
     const openSidebar = () => {
       sidebar.classList.add("open");
+      toggleBtn.setAttribute("aria-expanded", "true");
       if (overlay) overlay.classList.add("active");
+      document.body.classList.add("no-scroll");
+      if (closeBtn) closeBtn.focus();
     };
 
     const closeSidebar = () => {
       sidebar.classList.remove("open");
+      toggleBtn.setAttribute("aria-expanded", "false");
       if (overlay) overlay.classList.remove("active");
+      document.body.classList.remove("no-scroll");
+      toggleBtn.focus();
     };
 
     toggleBtn.addEventListener("click", openSidebar);
@@ -431,9 +518,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       };
 
-      // Pause/resume autoplay on hover
+      // Pause/resume autoplay on hover & focus/blur (WCAG compliance)
       carousel.addEventListener("mouseenter", stopAutoplay);
       carousel.addEventListener("mouseleave", startAutoplay);
+      carousel.addEventListener("focusin", stopAutoplay);
+      carousel.addEventListener("focusout", startAutoplay);
 
       // Start initially
       startAutoplay();
